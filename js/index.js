@@ -10,11 +10,20 @@ const signUpButtons = document.querySelectorAll(".btn");
 const pickDestination = document.querySelector(".content-destination h2");
 
 
+
 navLinks.forEach(link => {
     link.addEventListener("mouseenter", function(event) {
-        event.target.style.background = "lightblue";
+        if (link == navLinks[0]) {
+            event.preventDefault();
+            event.target.style.background = "black";
+        }
+        else {
+            event.target.style.background = "lightblue";
+        }
     })
 } )
+
+
 
 
 navLinks.forEach(link => {

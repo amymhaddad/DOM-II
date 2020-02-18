@@ -11,33 +11,76 @@ const pickDestination = document.querySelector(".content-destination h2");
 
 
 
-navLinks.forEach(link => {
-    link.addEventListener("mouseenter", function(event) {
-        if (link == navLinks[0]) {
-            event.preventDefault();
-            event.target.style.background = "black";
-        }
-        else {
-            event.target.style.background = "lightblue";
-        }
-    })
-} )
+function background(event) {
+    event.target.style.background = "pink";
+
+}
+
+function color(event) {
+    event.target.style.color = "blue";
+}
+
+//Correct ex of stopPropagation()?
+function backgroundV2(event) {
+    btn.stopPropagation()
+    event.target.style.color = "green";
+}
 
 
+signUpButtons.forEach(btn => {
+    btn.addEventListener("click", background);
+})
 
+signUpButtons.forEach(btn => {
+    btn.addEventListener("click", color);
+})
 
-navLinks.forEach(link => {
-    link.addEventListener("mouseleave", event => {
-        event.target.style.background = "white";
-    })
+signUpButtons.forEach(btn => {
+    btn.addEventListener("mouseenter", backgroundV2);
 })
 
 
+
+//Why won't this work? Is this where I add preventDefault() to stop the navigation items from refreshing the page
+function updateLinks(event) {
+    event.target.style.background = "lightblue";
+    event.preventDefault();
+}
+
 navLinks.forEach(link => {
-    link.addEventListener("click", event => {
-        event.target.style.color = "orange";
-    })
+    link.addEventListener("click", updateLinks);
+    debugger
 })
+
+
+
+
+// navLinks.forEach(link => {
+//     link.addEventListener("mouseenter", function(event) {
+//         if (link == navLinks[0]) {
+//             event.preventDefault();
+//             event.target.style.background = "black";
+//         }
+//         else {
+//             event.target.style.background = "lightblue";
+//         }
+//     })
+// } )
+
+
+
+// navLinks.forEach(link => {
+//     link.addEventListener("mouseleave", event => {
+//         event.target.style.background = "white";
+//     })
+// })
+
+
+// navLinks.forEach(link => {
+//     link.addEventListener("click", event => {
+//         event.target.style.color = "orange";
+//     })
+// })
 
 
 navHeader.addEventListener("dblclick", function(event) {
@@ -50,19 +93,7 @@ logoHeader.addEventListener("mouseover", function(event) {
 })
 
 
-signUpButtons.forEach(button => {
-    button.addEventListener("click", event => {
-        event.target.style.background = "pink";
-    })
-})
 
-signUpButtons.forEach(button => {
-    button.addEventListener("mouseleave", event => {
-        event.target.style.background = "lightblue";
-    } )
-})
-
-
-pickDestination.addEventListener("mouseenter", function() {
-    alert("You'll have a great trip!")
-})
+// pickDestination.addEventListener("mouseenter", function() {
+//     alert("You'll have a great trip!")
+// })

@@ -13,7 +13,6 @@ const pickDestination = document.querySelector(".content-destination h2");
 
 function background(event) {
     event.target.style.background = "pink";
-
 }
 
 function color(event) {
@@ -25,7 +24,6 @@ function backgroundV2(event) {
     btn.stopPropagation()
     event.target.style.color = "green";
 }
-
 
 signUpButtons.forEach(btn => {
     btn.addEventListener("click", background);
@@ -40,35 +38,6 @@ signUpButtons.forEach(btn => {
 })
 
 
-
-//Why won't this work? Is this where I add preventDefault() to stop the navigation items from refreshing the page
-function updateLinks(event) {
-    event.target.style.background = "lightblue";
-    event.preventDefault();
-}
-
-navLinks.forEach(link => {
-    link.addEventListener("click", updateLinks);
-    debugger
-})
-
-
-
-
-// navLinks.forEach(link => {
-//     link.addEventListener("mouseenter", function(event) {
-//         if (link == navLinks[0]) {
-//             event.preventDefault();
-//             event.target.style.background = "black";
-//         }
-//         else {
-//             event.target.style.background = "lightblue";
-//         }
-//     })
-// } )
-
-
-
 // navLinks.forEach(link => {
 //     link.addEventListener("mouseleave", event => {
 //         event.target.style.background = "white";
@@ -76,16 +45,27 @@ navLinks.forEach(link => {
 // })
 
 
-// navLinks.forEach(link => {
-//     link.addEventListener("click", event => {
-//         event.target.style.color = "orange";
-//     })
+
+function styleLinks(event) {
+    navLinks.forEach(link => {
+        event.target.style.color = "orange";    
+    })
+}
+
+//event.stopPropagation() not working 
+function mouseLeaves(event) {
+    navLinks.forEach(link => {
+        event.stopPropagation();
+    })
+}
+
+navHeader.addEventListener("click", styleLinks);
+
+navHeader.addEventListener("mouseleave", mouseLeaves);
+
+// navHeader.addEventListener("dblclick", function(event) {
+//     event.target.style.color = "green";
 // })
-
-
-navHeader.addEventListener("dblclick", function(event) {
-    event.target.style.color = "green";
-})
 
 
 logoHeader.addEventListener("mouseover", function(event) {

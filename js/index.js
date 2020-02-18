@@ -5,19 +5,72 @@ const navLinks = document.querySelectorAll(".nav-link");
 
 const logoHeader = document.querySelector(".logo-heading");
 
-const signUpButtons = document.querySelectorAll(".btn");
 
 const pickDestination = document.querySelector(".content-destination h2");
 
 
 
-function background(event) {
-    event.target.style.background = "pink";
+
+
+
+
+const destination = document.querySelectorAll(".destination");
+
+
+//Put stopPropogation on the inner item to prevent it from bubbling
+// function color(event) {
+//     event.target.style.color = "blue";
+//     alert('hello')
+//     event.stopPropagation()
+// }
+
+
+function changeBackgroundDiv1(event) {
+    destination[0].style.backgroundColor = "yellow";
+    alert('yellow')
+  
 }
 
-function color(event) {
-    event.target.style.color = "blue";
+function changeBackgroundDiv2(event){
+    destination[0].style.backgroundColor = "red"
+    alert('red')
+    event.stopPropagation()
+    // event.target.style.color = "red";
 }
+
+
+destination.forEach(dest => {
+    // dest.addEventListener("click", color);
+    dest.addEventListener("click", changeBackgroundDiv1);
+})
+
+
+const signUpButtons = document.querySelectorAll(".btn");
+
+signUpButtons.forEach(btn => {
+    // btn.addEventListener("click", color);
+    btn.addEventListener("click", changeBackgroundDiv2);
+})
+
+
+
+
+
+
+// function background(event) {
+//     event.target.style.background = "pink";
+// }
+
+
+
+
+
+
+signUpButtons.forEach(btn => {
+    btn.addEventListener("mouseenter", backgroundV2);
+})
+
+
 
 //Correct ex of stopPropagation()?
 function backgroundV2(event) {
@@ -29,13 +82,10 @@ signUpButtons.forEach(btn => {
     btn.addEventListener("click", background);
 })
 
-signUpButtons.forEach(btn => {
-    btn.addEventListener("click", color);
-})
 
-signUpButtons.forEach(btn => {
-    btn.addEventListener("mouseenter", backgroundV2);
-})
+
+
+
 
 
 // navLinks.forEach(link => {

@@ -1,4 +1,5 @@
 
+//stopPropagation() example 1
 const anchors = document.querySelectorAll("a");
 anchors.forEach(anchor => {
     anchor.addEventListener("click", function(event) {
@@ -17,6 +18,7 @@ navContainer.addEventListener("click", function() {
     navContainer.style.backgroundColor = 'green';
 })
 
+//stopPropagation() example 2
 const buttons = document.querySelectorAll(".btn");
 buttons.forEach(button => {
     button.addEventListener("click", function(event) {
@@ -32,8 +34,25 @@ destinations.forEach(destination => {
     })
 })
 
-
 const allDestinations = document.querySelector(".content-pick");
 allDestinations.addEventListener("click", function() {
     allDestinations.style.backgroundColor = "orange";
+})
+
+
+//Trying to get preventDefault() to work on the button 
+const buttons = document.querySelectorAll(".btn");
+buttons.forEach(button => {
+    button.addEventListener("click", function(event) {
+        button.innerHTML = "<code>preventDefault()<code> won't let you click";
+        event.preventDefault();
+    })
+})
+
+//Use preventDefault to prevent re-loading a page
+const anchors = document.querySelectorAll("a");
+anchors.forEach(anchor => {
+    anchor.addEventListener("click", function(event) {
+        event.preventDefault();
+    })
 })
